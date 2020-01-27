@@ -1,5 +1,5 @@
-Name: 
-USC NetId:
+Name: Chong Chen
+USC NetId: 7460787319
 CSCI 455 PA1
 Fall 2019
 
@@ -15,7 +15,7 @@ other students in the course."
 
 Initial below to "sign" the above statement:
 
-
+Chong Chen
 ----------------------------------------------
 ACKNOWLEDGE ANY OUTSIDE SOURCES
 
@@ -27,20 +27,38 @@ not need to list any of the code that we wrote for the assignment,
 i.e., the contents of the starter files for the assignment]
 
 
-
+None
 ----------------------------------------------
 KNOWN BUGS or LIMITATIONS:
 
 
-
+None
 ----------------------------------------------
 ANY OTHER NOTES FOR THE GRADER:
 
 
 
+Question 1:
+All the codes in this assignment are written by myself, under the direction of assignment description.
+The codes to get the dimensions of a string in bar.java and CoinSimComponent.java are modified from the part "Hints on graphics programming" of assignment description.
+
+Question 2:
+The probability of two heads in one trial is 25%:
+The probability of one head and one tail in one trial is 50%:
+The probability of two tails in one trial is 25%.
+
+Actually the trial has four outcomes with the same probability 25%: coin1 and coin2 are both head, coin1 and coin2 are both tails, coin1 with head while coin2 with tail, and coin1 with tail while coin2 with head.
+The result "one head and one tail" comprises the last two outcomes, so it is 50% rather than 25% as the other two.
+
+
+Question 3:
+Roughly 2000 trials.
+
+
+Question 4:
+Roughly 2.14 * 10^10.
+The largest value of trials:    2,147,483,647 (the largest value of an int type number)
+Where the program overflowed:   2,147,483,648
+
 ----------------------------------------------
 ANSWERS TO ASSIGNMENT README QUESTIONS (if applicable):
-
-
-
-

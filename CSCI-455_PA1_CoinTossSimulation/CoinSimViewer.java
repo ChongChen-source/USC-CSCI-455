@@ -33,7 +33,9 @@ public class CoinSimViewer
       
       //Creat the frame
       JFrame frame = new JFrame();
-      frame.setSize(800, 500);
+      final int INIT_WINDOW_WIDTH = 800;
+      final int INIT_WINDOW_HEIGHT = 500;
+      frame.setSize(INIT_WINDOW_WIDTH, INIT_WINDOW_HEIGHT);
       frame.setTitle("CoinSim");
       frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
       

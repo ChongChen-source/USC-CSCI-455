@@ -173,6 +173,11 @@ public class SolitaireBoard {
 
 		int sumCards = 0;
 
+		// Check currentSize is valid.
+		if (currentSize < 0 || currentSize > CARD_TOTAL - 1) {
+			return false;
+		}
+
 		// For 0 <= i <= currentSize - 1, 1 <= piles[i] <= CARD_TOTAL;
 		for (int i = 0; i < currentSize; i++) {
 			if (piles[i] <= CARD_TOTAL && piles[i] >= 1) {

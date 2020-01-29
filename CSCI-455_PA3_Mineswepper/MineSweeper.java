@@ -17,8 +17,8 @@ public class MineSweeper {
    private static final int FRAME_WIDTH = 400;
    private static final int FRAME_HEIGHT = 425;
    
-   private static int SIDE_LENGTH = 9;
-   private static int NUM_MINES = 10;
+   private static int SIDE_LENGTH = 16;
+   private static int NUM_MINES = 40;
    
 
    public static void main(String[] args) {
@@ -29,7 +29,7 @@ public class MineSweeper {
 
       frame.setSize(FRAME_WIDTH, FRAME_HEIGHT);
 
-      GameBoardPanel gameBoard = new GameBoardPanel(SIDE_LENGTH, SIDE_LENGTH, NUM_MINES);
+      GameBoardPanel gameBoard = new GameBoardPanel(SIDE_LENGTH, SIDE_LENGTH, NUM_MINES);                                                                 
 
       frame.add(gameBoard);
 

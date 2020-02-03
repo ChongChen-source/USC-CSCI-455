@@ -1,5 +1,5 @@
-Name: 
-USC NetID: 
+Name: 		Chong Chen
+USC NetID: 	chongche
 CS 455 PA4
 Fall 2019
 
@@ -15,7 +15,7 @@ other students in the course."
 
 Initial below to "sign" the above statement:
 
-
+Chong Chen
 ----------------------------------------------
 ACKNOWLEDGE ANY OUTSIDE SOURCES
 
@@ -27,19 +27,45 @@ not need to list any of the code that we wrote for the assignment,
 i.e., the contents of the starter files for the assignment]
 
 
-
+None
 ----------------------------------------------
 KNOWN BUGS or LIMITATIONS:
 
 
-
+None
 ----------------------------------------------
 DESCRIPTION OF YOUR CLASS DESIGN AND ALGORITHMS AND DATA STRUCTURES USED:
 
 
+AnagramDictionary.java		Public Interface:	constructor with dictionary file's name;
+												getAnagramsOf() method, returns all anagrams of the given string. This method is case-sensitive.
+							
+							Data Structure: 	Using a HashMap to contains the whole information of the given dictionary file.
+												The Map's Keys are canonical forms, with list of all its anagrams.
+											
+							Algorithm:			Go through the whole dictionary. Once detected a word with a new canonical form, 
+												put the canonical form and the word into the Map. once detected a word with a found
+												canonical form, add the word to the canonical's anagrams.
 
+Rack.java					Public Interface:	getAllSubsets(), returns all the subsets of the given String in an ArrayList.
+							
+							Data Structure: 	Using a HashMap in the helper method letterMap() to represent the multiSet of a 
+												given string. The HashMapcontains unique letters(as Key) shown in the String and 
+												their numbers of repetitions(as Value).
+
+							Algorithm:			Using the given recursion helper method to find all subsets of a string.
+
+ScoreTable.java				Public Interface:	getScore(), returns the Scarbble score of a valid word.
+							
+							Data Structure: 	Using an Array to store the score information of distinct English words.
+
+WordFinder.java				Data Structure:		Using a HashMap(scoreMap)to store all the valid words possible form the current rack string(as Key), 
+												and the score of each valid word(as Value).
+												
+												Using an ArrayList constructed with scoreMap's entries to implement the sort-function.
 ----------------------------------------------
 ANY OTHER NOTES FOR THE GRADER:
+
 
 
 

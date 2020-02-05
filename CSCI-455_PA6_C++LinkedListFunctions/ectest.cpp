@@ -196,7 +196,6 @@ void doMerge(ListType & list) {
    list = merge(list, list2);
 }
 
-
 //*****************************************************************
 // utility list funcs and Node methods
 // (Note: prototypes and comments for these functions are in ecListFuncs.h)

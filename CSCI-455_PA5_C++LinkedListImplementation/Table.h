@@ -1,8 +1,7 @@
-// Name:
-// USC NetID:
+// Name:      Chong Chen
+// USC NetID: chongche
 // CSCI 455 PA5
 // Fall 2019
-
 
 #ifndef TABLE_H
 #define TABLE_H
@@ -12,9 +11,8 @@
 //    such that each key (the string) is unique
 //    with efficient (O(1)) lookup, insert, and removal of entries
 
-// Note: it's good practice to not put "using" statement in *header* files.  Thus
+// Note: it's good practice to not put "using" statement in *header* files. Thus
 // here, things from std libary appear as, for example, std::string
-
 
 #include <iostream>
 #include <string>
@@ -22,84 +20,88 @@
 #include <functional>
 
 // the following line of code is a forward declaration of Node struct.
-// allows us to use Node* (or ListType because of typedef) in private 
+// allows us to use Node* (or ListType because of typedef) in private
 // section of Table below. (Complete Node definition is in listFuncs.h)
 class Node;
 
-typedef Node * ListType;
+typedef Node *ListType;
 
 class Table {
- public:
+   public:
+    static const int HASH_SIZE = 9973;  // a prime number
 
-   static const int HASH_SIZE = 9973;  // a prime number
+    // create an empty table, i.e., one where numEntries() is 0
+    // (Underlying hash table is HASH_SIZE.)
+    Table();
 
-   // create an empty table, i.e., one where numEntries() is 0
-   // (Underlying hash table is HASH_SIZE.)
-   Table();
+    // create an empty table, i.e., one where numEntries() is 0
+    // such that the underlying hash table is hSize
+    Table(unsigned int hSize);
 
-   // create an empty table, i.e., one where numEntries() is 0
-   // such that the underlying hash table is hSize
-   Table(unsigned int hSize);
+    // insert a new pair into the table
+    // return false iff this key was already present
+    //         (and no change made to table)
+    bool insert(const std::string &key, int value);
 
-   // insert a new pair into the table
-   // return false iff this key was already present 
-   //         (and no change made to table)
-   bool insert(const std::string &key, int value);
+    // returns the address of the value that goes with this key
+    // or NULL if key is not present.
+    //   Thus, this method can be used to either lookup the value or
+    //   update the value that goes with this key.
+    int *lookup(const std::string &key);
 
-   // returns the address of the value that goes with this key
-   // or NULL if key is not present.
-   //   Thus, this method can be used to either lookup the value or
-   //   update the value that goes with this key.
-   int *lookup(const std::string &key);
+    // remove a pair given its key
+    // false iff key wasn't present
+    bool remove(const std::string &key);
 
-   // remove a pair given its key
-   // false iff key wasn't present
-   bool remove(const std::string &key);
+    // print out all the entries in the table, one per line.
+    // Sample output:
+    //   zhou 283
+    //   sam 84
+    //   babs 99
+    void printAll() const;
 
-   // print out all the entries in the table, one per line.
-   // Sample output:
-   //   zhou 283
-   //   sam 84
-   //   babs 99
-   void printAll() const;
+    // Return the number of entries in the table
+    int numEntries() const;  // number of entries in the table
 
-   int numEntries() const;      // number of entries in the table
+    // hashStats: for diagnostic purposes only
+    // prints out info to let us know if we're getting a good distribution
+    // of values in the hash table.
+    // Sample output from this function
+    //   number of buckets: 997
+    //   number of entries: 10
+    //   number of non-empty buckets: 9
+    //   longest chain: 2
+    void hashStats(std::ostream &out) const;
 
-   // hashStats: for diagnostic purposes only
-   // prints out info to let us know if we're getting a good distribution
-   // of values in the hash table.
-   // Sample output from this function
-   //   number of buckets: 997
-   //   number of entries: 10
-   //   number of non-empty buckets: 9
-   //   longest chain: 2
-   void hashStats(std::ostream &out) const;
+   private:
+    //***********do not change the following two lines of code*************
+    // making these private disallows copying of tables
+    // (do not implement these two methods)
+    Table &operator=(const Table &);
+    Table(const Table &);
 
- private:
+    // hash function for a std::string
+    // (we defined it for you)
+    // returns a value in the range [0, hashSize)
+    unsigned int hashCode(const std::string &word) const {
+        // Note: calls a std library hash function for string (it uses the good
+        // hash
+        //   algorithm for strings that we discussed in lecture).
+        return std::hash<std::string>()(word) % hashSize;
+    }
 
-   //***********do not change the following two lines of code*************
-   // making these private disallows copying of tables  
-   // (do not implement these two methods)
-   Table &operator =(const Table &);
-   Table(const Table &);
+    // add private data and headers for private methods here
+    unsigned int hashSize;  // size of the hash table
+    // (used in hashCode method above)
 
-   // hash function for a std::string
-   // (we defined it for you)
-   // returns a value in the range [0, hashSize)
-   unsigned int hashCode(const std::string &word) const {
+    ListType
+        *buckets;  // store linked-list node head after calculating has value
 
-      // Note: calls a std library hash function for string (it uses the good hash
-      //   algorithm for strings that we discussed in lecture).
-      return std::hash<std::string>()(word) % hashSize;
-   }
+    // Return the number of non-empty buckets in the hash table.
+    int numNonEmptybuckets() const;
 
-   // add private data and headers for private methods here
-
-   unsigned int hashSize;      // size of the hash table
-   // (used in hashCode method above)
-
-
+    // Return the longest chain in the hash table.
+    int numLongestChain() const;
 };
 
 #endif
-

@@ -21,7 +21,8 @@ concord: concord.o Table.o listFuncs.o
 	g++ $(CXXFLAGS) -o concord concord.o Table.o listFuncs.o
 
 grades: grades.o Table.o listFuncs.o
-	g++ $(CXXFLAGS) -o grades grades.o Table.o listFuncs.o
+	#g++ $(CXXFLAGS) -o grades grades.o Table.o listFuncs.o
+	g++ $(CXXFLAGS) grades.cpp Table.o listFuncs.o -o grades
 
 pa5list: pa5list.cpp listFuncs.o listFuncs.h
 	g++ $(CXXFLAGS) pa5list.cpp listFuncs.o -o pa5list
@@ -37,4 +38,6 @@ grades.o: grades.cpp Table.h
 
 listFuncs.o: listFuncs.cpp listFuncs.h
 	g++ $(CXXFLAGS) -c listFuncs.cpp
+
+
 

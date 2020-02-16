@@ -1,5 +1,5 @@
-// Name: 		Chong Chen
-// USC NetID: 	chongche
+// Name:		Chong Chen
+// USC NetID:	chongche
 // CS 455 PA4
 // Fall 2019
 
@@ -47,7 +47,8 @@ public class AnagramDictionary {
 			String word = in.next();
 			String canonicalWord = canonicalForm(word);
 
-			// Sort the dictionary into different sets, using each distinct canonical form string as
+			// Sort the dictionary into different sets, using each distinct canonical form
+			// string as
 			// Key and the list of all its anagrams as value.
 			if (anagramMap.containsKey(canonicalWord)) {
 				anagramMap.get(canonicalWord).add(word);
@@ -69,7 +70,18 @@ public class AnagramDictionary {
 	 * @return a list of the anagrams of s
 	 */
 	public ArrayList<String> getAnagramsOf(String s) {
-		return anagramMap.get(canonicalForm(s));
+		String canonical = canonicalForm(s);
+		
+		// Cannot directly return anagramMap.get(canonical) here!!!
+		// Cause Returning list directly gives clients the ability to change the
+		// contents of that ArrayList from outside possibly invalidating the object.
+		ArrayList<String> anagrams = anagramMap.get(canonical);
+		if (anagrams != null) {
+			ArrayList<String> anagramsCopy = new ArrayList<>(anagrams);
+			return anagramsCopy;
+		}
+		
+		return new ArrayList<String>();
 	}
 
 	/**
@@ -88,4 +100,3 @@ public class AnagramDictionary {
 		return canonicalWord;
 	}
 }
-

@@ -152,11 +152,7 @@ public class MineField {
 	 * @return whether (row, col) is a valid field location
 	 */
 	public boolean inRange(int row, int col) {
-		if ((row >= 0 && row < numRows) && (col >= 0 && col < numCols)) {
-			return true;
-		} else {
-			return false;
-		}
+		return ((row >= 0 && row < numRows) && (col >= 0 && col < numCols)) ? true : false;
 	}
 
 	/**

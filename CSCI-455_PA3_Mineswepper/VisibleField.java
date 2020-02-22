@@ -232,11 +232,7 @@ public class VisibleField {
 	 * @return whether the square is uncovered PRE: getMineField().inRange(row, col)
 	 */
 	public boolean isUncovered(int row, int col) {
-		if (squares[row][col] >= 0) {
-			return true;
-		} else {
-			return false;
-		}
+		return (squares[row][col] >= 0) ? true : false;
 	}
 
 	/**
@@ -272,11 +268,7 @@ public class VisibleField {
 	 * @return whether the square is safe to uncover
 	 */
 	private boolean isSafeToUncover(int row, int col) {
-		if (!mineField.hasMine(row, col)) {
-			return true;
-		} else {
-			return false;
-		}
+		return (!mineField.hasMine(row, col)) ? true : false;
 	}
 
 	/**
@@ -288,11 +280,7 @@ public class VisibleField {
 	 * @return whether the square is able to be uncovered
 	 */
 	private boolean canBeUncovered(int row, int col) {
-		if (isUncovered(row, col) || getStatus(row, col) == MINE_GUESS) {
-			return false;
-		} else {
-			return true;
-		}
+		return (isUncovered(row, col) || getStatus(row, col) == MINE_GUESS) ? false : true;
 	}
 
 	/**
@@ -303,10 +291,6 @@ public class VisibleField {
 	 * @param col of the square PRE: isSafeToUncover(row, col)
 	 */
 	private boolean isRecursionBoundary(int row, int col) {
-		if (mineField.numAdjacentMines(row, col) >= 1) {
-			return true;
-		} else {
-			return false;
-		}
+		return (mineField.numAdjacentMines(row, col) >= 1) ? true : false;
 	}
 }
